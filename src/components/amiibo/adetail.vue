@@ -1,33 +1,33 @@
 <template>
-    <div class="ahome">
-       <ahome-top></ahome-top>
+    <div class="adetail">
+       <adetail-top></adetail-top>
        <ahome-main></ahome-main>
     </div>
 </template>
 <script>
-import ahomeTop from "./ahometop.vue"
+import adetailTop from "./adetailtop.vue"
 import ahomeMain from "./ahomemain.vue"
+
 export default {
     components:{
-        ahomeTop,
+        adetailTop,
         ahomeMain
     },
     data(){
         return {
-          
+         
         }
     },
-
     methods:{
-     
+  
     },
     mounted(){
-       
+        scrollTo(0,0)
     }
 }
 </script>
 <style scoped>
-  
+
 </style>
 
 

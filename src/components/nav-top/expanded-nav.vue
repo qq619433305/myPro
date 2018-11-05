@@ -12,7 +12,7 @@
                             <span class="link-copy hidden">{{expanded.left.node}}</span>
                         </a>
                         <a href="#" class="switch-btn">
-                            <div>{{expanded.left.button}}</div>
+                            <div @click.prevent="toGoods(index)">{{expanded.left.button}}</div>
                         </a>
                     </div>
                     <!-- 6个图片 -->
@@ -25,9 +25,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                
             </div>
         </div>
     </div>
@@ -108,7 +105,7 @@ export default {
                     title:"amiibo",
                     node:"增强您的游戏体验",
                     img:"/static/img/header/al1.jpg",
-                    button:"立即购买"
+                    button:"查看详情"
                 },
                 right:[
                     {title:"什么是amiibo",img:"/static/img/header/ar1.jpg"},
@@ -178,7 +175,22 @@ export default {
   methods:{
       isShow(index){
         this.Show = index--;
-      }
+      },
+       /* 路由跳转 */
+      toGoods(id){
+          this.$emit("listenToChidEvent","-1")
+          if(id < 2){
+            this.$router.push({
+              path:"goods",
+              query:{id}
+            })
+          }else if(id == 3){
+            this.$router.push({
+               path:"/ahome"
+            })
+          }
+          
+      },
   },
   props:["myShow"]
 }

@@ -1,7 +1,7 @@
 <template>
     <div class="news">
         <div class="row wrapper">
-            <div class="left col-md-4 col-sm-12 ml-sm-5">
+            <div class="left col-md-4 col-sm-12">
                 <div class="d-flex mb-2">
                     <h2>最新资讯</h2>
                     <a href="#" class="mt-2 ml-3 text-btn-arrow">查看全部</a>

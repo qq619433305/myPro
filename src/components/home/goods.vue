@@ -1,19 +1,19 @@
 <template>
   <div class="goods">
-      <div class="wrapper game">      
+      <div class="wrapper game">    
         <h1 class="title">探索游戏系统</h1>
         <div class="row">
-          <a class="goods-item col-md-4 col-xs-12" href="#" v-for="(item,index) in game" :key="index">
+          <a class="goods-item col-md-4 col-xs-12" href="#" v-for="(item,index) in game" :key="index"  @click.prevent="toGoods(index)">
             <img :src="item.img">
             <h5 class="mt-2">{{item.title}}</h5>
-            <span>{{item.price}}</span>   
+            <span>{{item.price}}</span>  
           </a> 
         </div>    
       </div>
        <div class="wrapper amiibo mt-5">      
         <h1 class="title">新amiibo发布</h1>
         <div class="row">
-          <a class="goods-item col-md-3 col-xs-12" href="#" v-for="(item,index) in amiibo" :key="index">
+          <a class="goods-item col-md-3 col-xs-12" href="#" v-for="(item,index) in amiibo" :key="index" @click.prevent="gotoDetail(index)">
             <img :src="item.img">
             <h5>{{item.name}}</h5>
             <span>{{item.date}}</span>  
@@ -21,6 +21,7 @@
         </div>    
       </div>
     </div>
+    
 </template>
 
 <script>
@@ -45,6 +46,32 @@ export default {
     }
   },
   methods:{
+     /* 路由跳转 */
+      toGoods(id){
+        if(id == 0){
+          this.$router.push({
+            path:"goods",
+            query:{id}
+          })
+        }else if(id > 0){
+          this.$router.push({
+            path:"goods",
+            query:{id:1}
+          })
+        }
+      },
+      gotoDetail(id){
+            this.$router.push({
+            name:'adetail',
+            params:{
+                id:id,
+                alist:this.alist
+            }
+          })
+      }
+  },
+  mounted(){
+    scrollTo(0,0)
   }
 }
 </script>

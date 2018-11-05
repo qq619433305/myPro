@@ -7,10 +7,10 @@
 <script>
 export default {
   mounted(){
-    this.$router.push('goods?id=0');
+    this.$router.push('home');
   }
 }
 </script>
-  
+
 <style scoped>
 </style>

@@ -1,12 +1,12 @@
 <template>
   <header>
          <!-- 1.顶部导航栏 -->
-     <div id="global-header" :class="(direction==-1)?'convert':''">
-         <div class="top-nav">
+    <div id="global-header" :class="(direction==-1)?'convert':''">
+        <div class="top-nav">
              <div class="wrapper">
-                 <a href="#" class="logo-nintendo hidden">
+                 <router-link to="/home" class="logo-nintendo hidden">
                     <img src="/static/img/header/logo-nintendo.svg">
-                 </a>
+                 </router-link>
                  <img class="logo2" src="/static/img/header/logo-nintendo2.svg">
                  <div class="search-flex hidden">
                      <div id="search-container">
@@ -17,7 +17,6 @@
                          <span >
                              "搜索 游戏、系统、玩法、配件等...
                          </span>
-                         <img src="">
                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36">
                             <path>
                                 d="M23.042 8.9c-3.88-3.88-10.208-3.865-14.107.034-3.9 3.899-3.915 10.227-.036 14.107 3.43 3.43 8.755 3.832 12.66 1.163l5.297 5.297a1.621 1.621 0 0 0 2.287-.005l.382-.382c.63-.631.634-1.661.006-2.289l-5.301-5.302c2.619-3.878 2.232-9.205-1.188-12.625V8.9zm-2.698 11.443c-2.424 2.423-6.358 2.433-8.77.022-2.411-2.412-2.401-6.346.023-8.77 2.423-2.423 6.357-2.433 8.769-.022 2.412 2.412 2.402 6.346-.022 8.77z"
@@ -33,19 +32,18 @@
                      <span>登录 / 注册</span>
                  </a>
              </div>
-         </div>
-         <div @mouseleave="getItem(-1)" class="bottom-nav">
+        </div>
+        <div @mouseleave="getItem(-1)" class="bottom-nav">
             <nav class="nav">
                 <div class="wrapper">
                     <a href="#" @click.prevent="toGoods(index)" v-for="(item,index) in section" :key="index" @mouseenter="getItem(index)">{{item}}</a>
                 </div>         
             </nav>
-            <expanded-nav :myShow="myItem"></expanded-nav>
-            
+            <expanded-nav :myShow="myItem" @listenToChidEvent="showMsg"></expanded-nav>
          </div>
         <div>
         </div>
-     </div>
+    </div>
   </header>
 </template>
   
@@ -64,6 +62,9 @@ export default {
     }
   },
   methods:{
+      showMsg(data){
+          this.getItem(data)
+      },
       /* 路由跳转 */
       toGoods(id){
           if(id < 2){
@@ -76,7 +77,6 @@ export default {
                path:"/ahome"
             })
           }
-        
           this.getItem(-1)
       },
       getItem(index){
@@ -84,7 +84,6 @@ export default {
       },    
     roll(){
         var _this_ = this
-   
         //判断鼠标滚轮滚动方向
         if (window.addEventListener)//FF,火狐浏览器会识别该方法
         window.addEventListener('DOMMouseScroll', wheel, false);
@@ -111,7 +110,8 @@ export default {
   },
   created(){
       this.roll();
-  }
+  },
+ 
 }
 </script>
 <style scoped>

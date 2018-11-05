@@ -197,6 +197,9 @@
         bigBox.style.visibility = "hidden"
       }
     },
+    mounted(){
+      scrollTo(0,0)
+    }
 
   
   }
